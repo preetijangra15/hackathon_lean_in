@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <style>
+    body {
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #dfdddd), color-stop(50%, #113f67));
+    background: linear-gradient(to right, #a2a8d3 50%, #113f67 50%);
+  }
+
+
+  .btn1{
+   width:100px;
+   height:200px;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+  margin:auto;
+}
+
+.btn2{
+   width:100px;
+   height:200px;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   
+   margin:auto;
+
+  
+}
+
+</style>
+</head>
+<body>
+    <div class="btn">
+        <div class="btn1">
+    <button type="submit" id="bttn_inv">Signup as investor</button>
+    </div>
+    <div class="btn2">
+    <button type="submit" id="bttn_strtup">signup as startup</button>
+    <div>
+    </div>
+
+    <div class="img">
+        <img src=""
+    </div>
+
+    <script>
+        const button = document.getElementById('bttn_inv');
+        const button1 = document.getElementById('bttn_strtup')
+        button.addEventListener('click', function () {
+            console.log(button)
+            window.location.replace('http://localhost:3000/signupinvestorpage');
+            
+        });
+
+        button1.addEventListener('click', function () {
+            //console.log(button)
+            window.location.replace('http://localhost:3000/signupstartuppage');
+            
+        });
+    </script>
+</body>
+</html>

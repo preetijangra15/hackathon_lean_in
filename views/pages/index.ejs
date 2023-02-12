@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "public/css/style.css"  />
+    <title>Document</title>
+    <style>
+        /* .main-login {
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    /*background-color: #a2a8d3 ;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #dfdddd), color-stop(50%, #113f67));
+    background: linear-gradient(to right, #a2a8d3 50%, #113f67 50%); 
+  }*/
+
+  .main-login {
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #dfdddd), color-stop(50%, #113f67));
+    background: linear-gradient(to right, #a2a8d3 50%, #113f67 50%);
+  }
+  .main-login .login-contain {
+    height: 75vh;
+    width: 70%;
+    background: -webkit-gradient(linear, left top, right bottom, from(rgba(255, 255, 255, 0.7)), to(rgba(236, 236, 236, 0.4)));
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(236, 236, 236, 0.4));
+    border-radius: 1rem;
+    margin: 5rem auto;
+    -webkit-box-shadow: 0.5rem 0.5rem 2rem -1rem #3a3939;
+            box-shadow: 0.5rem 0.5rem 2rem -1rem #3a3939;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .main-login .login-contain .link {
+    text-decoration: none;
+    color: #113f67;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  
+  .main-login .login-contain .link:hover {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+    color: gray;
+  }
+  
+  .main-login .login-contain .left-side, .main-login .login-contain .right-side {
+    margin: 2rem 2rem;
+    -webkit-box-shadow: 0.5rem 0.5rem 2rem -1rem #3a3939;
+            box-shadow: 0.5rem 0.5rem 2rem -1rem #3a3939;
+    height: 90%;
+    width: 100%;
+  }
+  
+  .main-login .login-contain .left-side {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  
+  .main-login .login-contain .left-side .img-class {
+  
+    height: 3.5rem;
+  }
+  
+  .main-login .login-contain .left-side .img-class #img-id {
+    height: 80%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  
+  
+  .main-login .login-contain .left-side input {
+    display: block;
+    border: none;
+    height: 2rem;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    padding: 0.2rem 1rem;
+    font-size: small;
+    color: gray;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+  }
+  
+  .main-login .login-contain .left-side input:focus {
+    outline: none;
+    border: none;
+  }
+  
+  .main-login .login-contain .left-side input:hover {
+    outline: 0.5px solid #113f67;
+    -webkit-box-shadow: 2px 2px 9px -2px #113f67;
+            box-shadow: 2px 2px 9px -2px #113f67;
+  }
+  
+  .main-login .login-contain .left-side label {
+    display: block;
+    text-align: left;
+    width: 78%;
+    margin: auto;
+    font-size: small;
+    color: gray;
+    margin-bottom: 0.5rem;
+  }
+  
+  .main-login .login-contain .left-side #sub_butt {
+    width: 80%;
+    background: #113f67;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  
+  .main-login .login-contain .left-side #sub_butt:hover {
+    -webkit-box-shadow: 4px 3px 9px -1px gray;
+            box-shadow: 4px 3px 9px -1px gray;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+  
+  .main-login .login-contain .right-side .welcomeNote h3 {
+    margin-left: 1rem;
+    color: black;
+    float: left;
+    margin-bottom: 2.5rem;
+  }
+  
+  .main-login .login-contain .right-side .welcomeImg {
+    height: 100%;
+    width: 100%;
+    margin: 0rem auto;
+    margin-top:10px;
+  }
+  
+  .main-login .login-contain .right-side .welcomeImg #wel-img-id {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+    </style>
+</head>
+
+<body >
+    
+<div class="main-login">
+       
+    <div class="login-contain">
+    <div class="left-side">
+    <div class="img-class">
+    <img src="/views/images/dealon_Png.png"  alt="" />
+    </div>
+    
+
+    <form action="logininvestor" method="post">
+
+        
+            <label for="email1">email</label>
+            <input placeholder="enter your email" type="email"  id="email1" name="email"/>
+            <label for="pwd1">password</label>
+            <input placeholder="enter your password" type="password" id="pwd1" name="password"/>
+
+            <button type="submit" id="sub_butt">Login</button>
+
+        </form>
+        <div class="footer">
+                         <h4>Don't have an Account ? <Link class='link' to='/Register'>Register Now</Link></h4>
+                     </div>
+    </div>
+    
+    <div class="right-side">
+    <div class="welcomeNote">
+        
+        </div>
+        <div clas="welcomeImg">
+                    <img src= "/views/images/image.png" id='wel-img-id' alt=""  />
+                </div>
+    </div>
+</div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

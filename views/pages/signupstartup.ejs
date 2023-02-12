@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #dfdddd), color-stop(50%, #113f67));
+    background: linear-gradient(to right, #a2a8d3 50%, #113f67 50%);
+  }
+
+    .first{
+        position: absolute;
+        left: 170px;
+        top:220px;
+    }
+  
+    .second{
+        position: absolute;
+        left: 170px;
+        top:320px
+    }
+
+    .third{
+        position: absolute;
+        left: 170px;
+        top:420px
+    }
+    .eight{
+        position: absolute;
+        left: 170px;
+        top:520px
+    }
+    .fourth{
+        position: absolute;
+        right: 380px;
+        top:120px;
+    }
+
+    .fifth{
+        position: absolute;
+        right: 380px;
+        top:220px;
+    }
+    .sixth{
+        position: absolute;
+        right: 380px;
+        top:320px;
+    }
+    .seventh{
+        position: absolute;
+        right: 380px;
+        top:420px;
+    }
+
+    .ninth{
+        position: absolute;
+        right: 380px;
+        top:520px;
+    }
+    
+    input{
+        width: 200%;
+        height: 2rem;
+    }
+
+    h1{
+        padding: 5%;
+        padding-left: 5%;
+        padding-top: 3%;
+        margin: 0%;
+        font-size: 500%;
+        
+    }
+
+    label{
+        font-size: 120%;
+    }
+    </style>
+</head>
+<body>
+    
+    <h1 > Login</h1>
+    <form action = "/auth/signupstartup" method="post">
+    <div class="first">
+    <label for="email">Email</label><br>
+    <input placeholder="enter your email" type="email"  id="email1" name="email"/>
+</div>
+
+<div class="second">
+    <label for="name">Name</label><br>
+    <input placeholder="enter your Name" type="text"  id="name" name="name"/>
+</div>
+
+<div class="third">
+    <label for="bio">Bio</label><br>
+    <input placeholder="enter your bio" type="text"  id="bio" name ="bio/>
+    </div>
+
+
+
+        <div class="fourth">
+    <label for="phone">Phone</label><br>
+    <input placeholder="enter your Phone" type="text"  id="phone" name="phone"/>
+</div>
+
+<div class="fifth">
+    <label for="password">Password</label><br>
+    <input placeholder="enter your password" type="password"  id="password" name="password"/>
+</div>
+
+<div class="sixth">
+    <label for="busname">Business Name</label><br>
+    <input placeholder="enter your Business Name" type="text"  id="busname" name="BusName"/>
+</div>
+
+<div class="seventh">
+    <label for="revenue">Revenue</label><br>
+    <input placeholder="enter your revenue" type="text"  id="revenue" name="revenue"/>
+</div>
+
+<div class="eight">
+    <label for="sale">Sale</label><br>
+    <input placeholder="enter your sale" type="text"  id="sale" name="sale"/>
+</div>
+
+<div class="ninth">
+    <label for="offer">Offer</label><br>
+    <input placeholder="enter your offer" type="text"  id="offer" name="offer"/>
+</div>
+
+<button type="submit"> submit</button>
+</form>
+</body>
+</html>

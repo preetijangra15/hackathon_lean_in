@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <style>
+        .business{
+            height: auto;
+            width: 50vw;
+            margin-left: 35%;
+            margin-top: 3%;
+            box-shadow: 0.5rem 0.5rem 2rem -1rem #3a3939;
+            border-radius: 2%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <div class="first">
+        <p><&percnt;= name &percnt;></p>
+    </div> -->
+
+
+    <div class="second">
+    <% for(var i=0; i<users.length; i++){ %>
+        <div class="business">
+        <h1><%= users[i].name %></h1>
+        <h3><%= users[i].BusName %></h3>
+        <h4><%= users[i].revenue %></h4>
+    </div>
+        <% } %>
+
+
+
+     
+
+    </div>
+</body>
+</html>
+
