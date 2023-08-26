@@ -30,18 +30,3 @@ Recruiters can signup as Admin to:
   5) Run npm start and the project should be up and working on localhost:8000 
 
 
-## Contributors:
-
-Team Name: Cereal Killers
-
-* [Archit Keshri](https://github.com/architkeshri)
-* [Umang Aggarwal](https://github.com/Umang-19)
-* [Prakhar Gupta](https://github.com/Prakhar1106)
-* [Ojasvi Gupta](https://github.com/coder-oj)
-
-### Video and PPT
-
-* [Presentation](https://www.canva.com/design/DAEeugz1STA/FXuvF2uFmqkHsEpYxDJYbQ/view?utm_content=DAEeugz1STA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
-* [Video](https://drive.google.com/file/d/1CBHpbjTbZtXH9SHC1Nn-UEPvlPsIirLt/view?usp=sharing)
-
-### Made at: DevJam 4.0
