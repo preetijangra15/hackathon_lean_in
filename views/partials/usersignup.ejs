@@ -1,0 +1,95 @@
+
+    <div class="row">
+      <div class="col-md-12">
+        <label for="name" class="form-label">Name</label>
+        <div class="input-group">
+        <span class="input-group-text" id="inputGroupPrepend2"><i class="fas fa-user"></i></span>
+        <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="emailreg" class="form-label">E-mail</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fas fa-at"></i></span>
+          <input type="email" class="form-control" id="emailreg" name="email" aria-describedby="inputGroupPrepend2"
+            required>
+          <div class="email error"></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend2"><i class="fas fa-key"></i></span>
+          <input type="password" class="form-control" id="pass1" name="password" aria-describedby="inputGroupPrepend2"
+            required>
+          <div class="password error"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label for="degree" class="form-label">Degree</label>
+        <select class="form-select" name="degree" id="degree" required>
+          <option selected disabled value="">Choose...</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="MCA">MCA</option>
+          <option value="BCA">BCA</option>
+          <option value="Bsc(cs)">Bsc(CS)</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="college" class="form-label">College</label>
+        <input type="text" class="form-control" name="college" id="college" required>
+      </div>
+      <div class="col-md-4">
+        <label for="gradyear" class="form-label">Graduation Year</label>
+        <!--input type="text" class="form-control" name="gradyear" id="gradyear" required-->
+        <select class="form-select" name="gradyear" id="gradyear" required>
+          <option selected disabled value="">Choose...</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label for="linkedin" class="form-label">LinkedIn</label>
+        <div class="input-group">
+          <span class="input-group-text" id="linkedin"><i class="fab fa-linkedin"></i></span>
+          <input type="text" class="form-control" id="linkedin" name="linkedin" aria-describedby="inputGroupPrepend2"
+            required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+          <label class="form-check-label" for="invalidCheck2">
+            Agree to terms and conditions
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-2">
+        <button class="btn btn-primary">Register</button>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <p style="display:inline;">Have already an account? </p><a style="color: blue; font-size: large;" onclick="toggle('log', 'sign');">Login</a>
+      </div>
+      <div class="col-6">
+        <p style="display:inline;">Company Admin Signup </p><a style="color: blue; font-size: large;" onclick="toggle('adsign', 'sign');">Here</a>
+      </div>
+    </div>
+    

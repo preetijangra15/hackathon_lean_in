@@ -1,0 +1,223 @@
+
+<!---------Registration---------------
+  ------------------------------------->
+<div class="container signup" id="sign">
+  <form>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h4 style="font-weight: 700; text-align: center;">USER REGISTRATION</h4>
+      </div>
+      <div class="col-md-1 offset-md-2">
+        <a style="font-size: 20px" onclick="clos('sign');"><i class="fas fa-times"></i></a>
+      </div>
+    </div>
+    <div class="row">
+      <%- include('partials/usersignup'); -%>
+     </div>
+  </form>
+</div>
+<!---------Admin Registration---------------
+  ------------------------------------->
+  <div class="container adsignup" id="adsign">
+    <form>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h4 style="font-weight: 700; text-align: center;">ADMIN REGISTRATION</h4>
+        </div>
+        <div class="col-md-1 offset-md-1">
+          <a style="font-size: 20px" onclick="clos('adsign');"><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <%- include('partials/adminsignup'); -%>
+      </div>
+    </form>
+  </div>
+<!---------User Login---------------
+  ------------------------------------->
+  <div class="container login" id="log">
+    <form>
+      <div class="row">
+        <div class="col-md-4 offset-md-3">
+          <h4 style="font-weight: 700; text-align: center;">LOGIN</h4>
+        </div>
+        <div class="col-md-1 offset-md-4">
+          <a style="font-size: 20px" onclick="clos('log');"><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12">
+          <label for="email" class="form-label">E-mail</label>
+          <div class="input-group">
+            <span class="input-group-text" id="inputGroupPrepend2"><i class="fas fa-at"></i></span>
+            <input type="text" class="form-control" id="validationDefaultUsername" name="email"
+              aria-describedby="inputGroupPrepend2" autocomplete="off" required>
+            
+          </div><div class="email error"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <span class="input-group-text" id="inputGroupPrepend2"><i class="fas fa-key"></i></span>
+            <input type="password" class="form-control" id="pass" name="password" aria-describedby="inputGroupPrepend2"
+              required>
+            
+          </div><div class="password error danger"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <input class="form-check-input" type="checkbox" name="adminlogin" id="adminlogin">
+          <label class="form-check-label" for="adminlogin">Login as Admin</label>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <button class="btn btn-primary">Login</button>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <p style="display:inline;">Don't Have Account? </p><a style="color: blue; font-size: large;" onclick="toggle('sign', 'log');">Sign up</a>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <p style="display:inline;"><a href ="/forget-password">Forgot Password?</a>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+<script>
+  const form = document.querySelectorAll('form');
+  const emailError = document.querySelectorAll('.email.error');
+  const passwordError = document.querySelectorAll('.password.error');
+
+  form[0].addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    //reset Errors
+    emailError[0].textContent = '';
+    passwordError[0].textContent = '';
+
+    //get the values
+    const name = form[0].name.value;
+    const email = form[0].email.value;
+    const password = form[0].password.value;
+    const degree = form[0].degree.value;
+    const linkedin = form[0].linkedin.value;
+    const gradyear = form[0].gradyear.value;
+    const college = form[0].college.value;
+
+    try {
+      const res = await fetch('/signup', {
+        method: 'POST',
+        body: JSON.stringify({ name, email, password, degree, college, gradyear, linkedin }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        emailError[0].textContent = data.errors.email;
+        passwordError[0].textContent = data.errors.password;
+      }
+      if (data.user) {
+        location.assign('/dashboard');
+        //location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  })
+
+  form[1].addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    //reset Errors
+    emailError[1].textContent = '';
+    passwordError[1].textContent = '';
+
+    //get the values
+    const name = form[1].name.value;
+    const email = form[1].email.value;
+    const password = form[1].password.value;
+    const organization = form[1].orgname.value;
+    const linkedin = form[1].linkedin.value;
+    const orgwebsite = form[1].orgweb.value;
+
+    try {
+      const res = await fetch('/adminsignup', {
+        method: 'POST',
+        body: JSON.stringify({ name, email, password, organization, orgwebsite, linkedin }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        emailError[1].textContent = data.errors.email;
+        passwordError[1].textContent = data.errors.password;
+      }
+      if (data.admin) {
+        location.assign('/findbyrole');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  })
+
+  form[2].addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    //reset Errors
+    emailError[2].textContent = '';
+    passwordError[2].textContent = '';
+
+    //get the values
+    const email = form[2].email.value;
+    const password = form[2].password.value;
+    
+      if(document.getElementById('adminlogin').checked == true){
+        try{
+          res = await fetch('/adminlogin', {
+          method: 'POST',
+          body: JSON.stringify({ email, password }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+          const data = await res.json();
+          console.log(data);
+          if (data.errors) {
+          emailError[2].textContent = data.errors.email;
+          passwordError[2].textContent = data.errors.password;
+          }
+          if (data.admin) {
+          location.assign('/findbyrole'); 
+        }
+      } catch (error) {
+      console.log(error);
+     }
+    } else{
+        try{
+          res = await fetch('/login', {
+          method: 'POST',
+          body: JSON.stringify({ email, password }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+          const data = await res.json();
+          console.log(data);
+          if (data.errors) {
+          emailError[2].textContent = data.errors.email;
+          passwordError[2].textContent = data.errors.password;
+          }
+          if (data.user) {
+          location.assign('/dashboard'); 
+        }
+      } catch (error) {
+      console.log(error);
+     }
+    }
+  });
+</script>

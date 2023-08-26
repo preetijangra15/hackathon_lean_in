@@ -1,0 +1,156 @@
+<% if(successMessage.length>0) { %>
+  <div class="alert alert-success" style="text-align: center;">
+      <h5>
+          <%= successMessage %>
+      </h5>
+  </div>
+<% } %>
+
+<%- include('partials/header'); -%>
+
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 py-5 py-lg-0 order-2 order-lg-1" data-aos="fade-right">
+          <h1>Find the best Suited Job Role</h1>
+          <h2>On the basis of Technical Skills and Areas of Interest</h2>
+          <% if (!user) { %>
+            <!-- <h6 style="color: #adc7de;">Click on the button to register as Admin or User.</h6>-->
+            <a onclick="toggle('sign', 'log');" class="btn-get-started scrollto">Register User/Admin</a>
+            <% } %>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+          <img src="assets/img/career2.png" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-aos="fade-in">About Us</h2>
+        <p data-aos="fade-in">
+          Having difficulties finding the perfect Job Role? No worries, Predict My Career is here to make it easier for you in just few simple steps. 
+          Users can take the assessment, upload their resume and apply for job roles.  
+          Admins can also fill out the form to find the best suited roles for their recruits. Moreover, Admins can also find candidates for a particular job role. 
+        </p>
+      </div>
+      
+        <div class="row content justify-content-center">
+         
+
+        
+        <div class="imagi col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right"></div>
+        <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
+          <div class="flex-column justify-content-center">
+            <div class="row">
+              <div class="col-md-6 icon-box" data-aos="fade-up">
+                <i class="bx bx-receipt"></i>
+                <h4>Admin/ User Signup</h4>
+                <p>Signup as Admin(for Recruiters) or User by providing few basic personal details of yours like name, email etc.</p>
+              </div>
+              <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                <i class="bx bx-cube-alt"></i>
+                <h4>Login</h4>
+                <p>Using the same email and password, log into your account.</p>
+              </div>
+              <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                <i class="bx bx-images"></i>
+                <h4>Fill Out the form</h4>
+                <p>Answer a few questions about Interests and Technical Skills, and on that basis get the best
+                  suited CS Geek Profile predicted. </p>
+              </div>
+              <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                <i class="bx bx-shield"></i>
+                <h4>View results</h4>
+                <p>Users can take multiple Assessments, results of all of which would be shown on their dashboard. Admins can also find candidates' listing by job roles.</p>
+              </div>
+            </div>
+          </div><!-- End .content-->
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+  <!-- ======= Features Section ======= -->
+  <section id="features" class="features section-bg">
+    <div class="container">
+
+
+
+
+      <div class="section-title">
+        <h2 data-aos="fade-in">Features</h2>
+        <!-- <p data-aos="fade-in">A platform for predicting job roles based on few inputs by the user. Users can apply for a job role and Admins can view their resumes, and connect.</p> -->
+      </div>
+
+      <div class="row content">
+        <div class="col-md-5" data-aos="fade-right">
+          <img src="assets/img/features-4.svg" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-4" data-aos="fade-left">
+          <h3>Finding a perfect Job Role is just a few clicks away!</h3>
+          <p class="fst-italic">
+            Feed in just a few details and there you go!
+          </p>
+          <ul>
+            <li><i class="bi bi-check"></i> Users can apply for the job roles based on predictions made and upload their resumes.</li>
+            <li><i class="bi bi-check"></i> Multiple assessments can be taken, Users can also view previous predictions made and view their responses.</li>
+            <li><i class="bi bi-check"></i> Recruiters can find the most suitable candidates according to the job roles.</li>
+            <li><i class="bi bi-check"></i> Recruiters can also view resumes, connect with the candidates based on the predictions made.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Features Section -->
+<!--TEAM Section-->
+<section id="team" class="team section-bg">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="section-title">
+            <h2 data-aos="fade-in">Team Cereal Killers</h2>
+        </div>
+    </div>
+</div>
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-3 cont" data-aos="zoom-in">
+            <div class="floa"></div>
+            <img src="assets/img/teams/archit.jpg" alt="profile pic" class="image"><br>
+            <h3 style="text-align: center;">Archit Keshri</h3>
+            <h5 style="text-align: center;">MCA 1st Year</h5>
+        </div>
+        <div class="col-md-3 cont" data-aos="zoom-in">
+          <div class="floa"></div>
+          <img src="assets/img/teams/oj.png" alt="profile pic" class="image"><br>
+          <h3 style="text-align: center;">Ojasvi Gupta</h3>
+          <h5 style="text-align: center;">MCA 1st Year</h5>
+      </div>
+      <div class="col-md-3 cont" data-aos="zoom-in">
+        <div class="floa"></div>
+        <img src="assets/img/teams/prakhar.png" alt="profile pic" class="image"><br>
+        <h3 style="text-align: center;">Prakhar Gupta</h3>
+        <h5 style="text-align: center;">MCA 1st Year</h5>
+    </div>
+    <div class="col-md-3 cont" data-aos="zoom-in">
+      <div class="floa"></div>
+      <img src="assets/img/teams/umang.png" alt="profile pic" class="image"><br>
+      <h3 style="text-align: center; font-size: 23px;">Umang Aggarwal</h3>
+      <h5 style="text-align: center;">MCA 1st Year</h5>
+  </div>
+      
+      </div>
+  </div>
+</section>
+  <%- include('login'); -%>
+  <%- include('partials/footer'); -%>

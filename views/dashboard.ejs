@@ -1,0 +1,354 @@
+<%- include('partials/header'); -%>
+<% if(message.length>0) { %>
+
+    <script>
+        var msg = '<%= message %>'
+        function popup(){
+            swal("", msg , "success", {
+            button: {
+                text:"Ok",
+                className:"swal-btn",         
+            }  
+    });
+        }
+        popup();
+    </script>    
+ 
+     
+<% } %>
+
+<div class="row">
+<div class="col-md-3">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="section-title">
+                <h2 data-aos="fade-in">Profile</h2>
+            </div>
+        </div>
+    </div>
+    <% let img = `assets/img/profile.png`; %>
+    <% if(user.imgurl !== ""){ %>
+    <%    img = user.imgurl; %>
+    <% } %>
+    <div class="row justify-content-center">
+        <div class="col-md-9 contain" data-aos="fade-left">
+            <div class="floa"><a onclick="toggle('upload-container')"  title="Update Profile"><i class="fas fa-camera fa-2x text"></i></a></div>
+            <a onclick="toggle('upload-container')">
+                <img src=<%=img%> alt="profile pic" class="image">
+        </div><br>
+    </div>
+    
+    <div class="row justify-content-center" >
+        <div class="col-md-12 " data-aos="fade-right"><h4 style="color:rgb(252, 113, 58); text-align:center;"><%= user.name %></h4></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12 " data-aos="fade-right"><h5 style="text-align:center;"><a href="mailto:<%= user.email %>"><%= user.email %></a></h5></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12" data-aos="fade-right"><h5 style="text-align:center;"><%= user.degree %> Student (<%= user.gradyear %>)</h5></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12 " data-aos="fade-right"><h5 style="text-align:center;">Studying in <%= user.college %></h5></div>
+    </div>
+    <div class="row justify-content-center">
+        <% if(user.cvurl === ""){ %>
+            <div class="col-md-4" data-aos="zoom-in-left"><h5 style="text-align:right;"><a onclick="toggle('upload-container-1')" onmouseout="cloos()" onmouseover="messg('Please Upload Resume', '<i style=\'color:orange\' class=\'far fa-grin-beam fa-2x\'></i>', 'fade-up');" title="Please Upload Resume"><i class="fas fa-file-pdf fa-lg"></i></a></h5></div> 
+        <% }else{ %> 
+            <div class="col-md-4" data-aos="zoom-in-left"><h5 style="text-align:right;"><a href="<%= user.cvurl %>" target="_blank" oncontextmenu="toggle('upload-container-1')" title="View Resume/ Right Click to Update"><i class="fas fa-file-pdf fa-lg"></i></a></h5></div>
+        <% } %>
+        <div class="col-md-4" data-aos="zoom-in"><h5 style="text-align:center;"><a href="<%= user.linkedin %>" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin fa-lg"></i></a></h5></div>
+        <div class="col-md-4" data-aos="zoom-in-right"><h5 style="text-align:left;"><a href="mailto:<%= user.email %>" title="Email"><i class="fas fa-paper-plane"></i></a></h5></div>
+    </div>
+    <br>
+    <hr style="height: 2px; color: blueviolet;"/><br>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="section-title">
+                <h2 data-aos="fade-in">Jobs Applied</h2>
+            </div>
+        </div>
+    </div>
+    <% if(user.roles.length === 0){ %>
+        <h5 style="text-align: center;">You Haven't applied yet</h5>
+    <% }else{ %>
+        <% for(let i=0;i<user.roles.length;i++){ %>
+            <div class="row" data-aos="fade-up">
+                <div class="row alert-success alert-dismissible fade show">
+                    <div class="col-md-11">
+                        <strong><%= user.roles[i] %></strong> 
+                    </div>
+                    <div class="col-md-1">
+                        <a><i class="fas fa-trash-alt" onclick="deleterole('<%= i %>');" onmouseout="style.color = 'black';" onmouseover="style.color='red';"></i></a>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    <% } %>
+
+</div>
+<% const subjects = ['Software Engineering', 'IOT', 'cloud computing', 'programming', 'networks', 'Computer Architecture', 'data engineering', 'hacking', 'Management', 'parallel computing']; %>
+<% const books = ["Guide","Health","Self help","Horror","Biographies","Science fiction","Childrens","Satire","Autobiographies","Prayer books","Fantasy","Journals","Trilogy","Anthology","Encyclopedias","Drama","Mystery","History","Dictionaries","Science","Religion-Spirituality","Diaries","Poetry","Action and Adventure","Cookbooks","Travel","Art","Comics","Series","Math","Romance"]; %>
+<% const certificate = ["R Programming","Information Security","Shell Programming","Machine Learning","Full Stack","Hadoop","Python","Distro Making","App Development"]; %> 
+<% const workshops = ["Database Security","Web Technologies","System Designing","Hacking","Testing","Data Science","Game Development","Cloud Computing"]; %>
+<% const company = ["Service Based","Web Services","BPA","Testing and Maintainance Services","Product Based","Finance","Cloud Services","Product Development","Sales and Marketing","SAaS Services"]; %>
+<% const career = ["System Developer","Security","Business Process Analyst","Developer","Testing","Cloud Computing"]; %>
+<% var count=-1; %>
+<% const jd = { 'Applications Developer': 'An application developer is responsible for developing and modifying source code for software applications. These applications are aimed at aiding customers with computer tasks or programs.','CRM Technical Developer': 'CRM developers are programmers who specialize in systems that collect user, consumer, and subscriber data. Their job is to improve the tools sales reps, customer service reps, account managers.','Database Developer': 'Database developers work in the IT department and are responsible for the development and maintenance of databases while following specific coding standards.','Mobile Applications Developer': 'Mobile applications developers create and develop mobile apps. They have a strong working knowledge of the different platforms that applications are suitable for development.','Network Security Engineer': 'A network security engineer is involved in the provisioning, deployment, configuration, and administration of many different pieces of network- and security-related hardware and software.','Software Developer': 'Software developers develop computer applications that allow users to perform specific tasks on computers.  They may also customize existing systems that run devices or control networks.','Software Engineer': 'A software engineer is a person who applies the principles of software engineering to the design, development, maintenance, testing, and evaluation of computer software to provide the best user.','Software Quality Assurance': 'A software quality assurance engineer monitors every phase of the software development process so as to ensure design quality, making sure the quality.','Systems Security Administrator': 'A security systems administrator handles all aspects of information security and protects the virtual data resources of a company from unwanted authorization such as data breach.','Technical Support': 'Diagnosing and repairing faults. Resolving network issues. Installing and configuring hardware and software. Speaking to customers to quickly get to the root of their problems and provide solutions.','UX Designer': 'UX designer make products and technology usable, enjoyable, and accessible for humans. UX designers tend to work as part of a wider product team, and help bridge the gap between users and teams','Web Developer': 'They are developers who are capable of handling all aspects of a web application such as front-end, back-end, clients, servers and databases. Full stack developer handles everything of a web app.'} %>
+<% var arr1 = user.roles %>
+<% var flag = false %>
+<% function checkArr(st){ %>
+    <% for(let i=0;i<arr1.length; i++){ %>
+    <% if(arr1[i]===st){ %>
+        <% flag=true; break; %>
+        <% } %>
+    <% } %>
+<% } %>
+<div class="col-md-9 effect">
+    <% if(user.result.length === 0){ %>
+        <h5 style="margin-top:150px;"><a href="/main-form">Click Here</a> to assess yourself, and get your job predicted</h5>
+    <% }else{ %>
+    <% user.result.reverse().forEach((element)=>{ %>
+        <% count++; %>
+        <div class="row">
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-3">
+                    <h5><%= element.date %></h5>
+                </div>
+                <div class="col-md-7"><hr style="height: 4px; color: black;"/></div>
+                <div class="col-md-2"><a href="#r<%= count%>" id='hide<%= count%>' style="font-size: large;" onclick="show('d<%= count%>', 'hide<%= count%>');">My Response <i class="fas fa-eye-slash fa-lg"></i></a></div>
+            </div>
+            <div class="row" id="r<%= count%>" >
+                <% checkArr((element.s1).toString()) %>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <% if(flag){ %>
+                        <button id='a<%= count%>' onclick="messg('Already Applied', '<i style=\'color: green;\' class=\'fas fa-check-circle fa-2x\'></i>', 'zoom-out-down');" style="border:none;">
+                    <% } else { %>
+                        <button id='a<%= count%>' onclick="apply('<%= user._id%>','<%= element.s1 %>');" style="border:none;">
+                        <% } %>
+                    <div class="card" style="width: 18rem;">
+                        <div class="float" >Click to Apply</div>
+                        <img class="card-img-top" src="assets/img/jobs-img/<%=element.s1%>.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title" style="font-weight: 700;"><%= element.s1 %></h5>
+                          <h6 class="card-subtitle mb-2 text-muted"><%= element.date %></h6>
+                          <p class="card-text"><%= jd[element.s1] %></p>
+                          <h6 style="font-size: 13px; color: rgba(0, 0, 0, 0.5);">Decision Tree Classifier: <%= element.s4 %></h6>
+                        </div>
+                    </div>
+                </div>
+                <% flag = false;%> 
+                <% checkArr((element.s2).toString()) %>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <% if(flag){ %>
+                        <button id='b<%= count%>' onclick="messg('Already Applied',  '<i style=\'color: green;\' class=\'fas fa-check-circle fa-2x\'></i>', 'zoom-out-down');" style="border:none;">
+                    <% } else { %>
+                        <button id='b<%= count%>' onclick="apply('<%= user._id%>', '<%= element.s2 %>');" style="border:none;">
+                        <% } %>
+                    <div class="card" style="width: 18rem;">
+                        <div class="float" >Click to Apply</div>
+                        <img class="card-img-top" src="assets/img/jobs-img/<%=element.s2%>.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title"  style="font-weight: 700;"><%= element.s2 %></h5>
+                          <h6 class="card-subtitle mb-2 text-muted"><%= element.date %></h6>
+                          <p class="card-text"><%= jd[element.s2] %></p>
+                          <h6 style="font-size: 13px; color: rgba(0, 0, 0, 0.5);">Support Vector Machine Classifier: <%= element.s5 %></h6>
+                        </div>
+                    </div>
+                </div> 
+                <% flag = false;%>
+                <% checkArr((element.s3).toString()) %>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    
+                    <% if(flag){ %>
+                        <button id='c<%= count%>' onclick="messg('Already Applied', '<i style=\'color: green;\' class=\'fas fa-check-circle fa-2x\'></i>', 'zoom-out-down');" style="border:none;">
+                    <% } else { %>
+                        <button id='c<%= count%>' onclick="apply('<%= user._id%>', '<%= element.s3 %>');" style="border:none;">
+                        <% } %>
+                        <div class="card" style="width: 18rem;">
+                            <div class="float" >Click to Apply</div>
+                            <img class="card-img-top" src="assets/img/jobs-img/<%=element.s3%>.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title" style="font-weight: 700;"><%= element.s3 %></h5>
+                          <h6 class="card-subtitle mb-2 text-muted"><%= element.date %></h6>
+                          <p class="card-text"><%= jd[element.s3] %></p>
+                          <h6 style="font-size: 13px; color: rgba(0, 0, 0, 0.5);">Random Forest Classifier: <%= element.s6 %></h6>
+                        </div>
+                    </div>
+                    </button>
+                </div> 
+                <% flag = false;%>
+            </div>
+            <div class="row response" id='d<%= count%>' style="visibility: hidden; height: 0px;" data-aos="fade-right" data-aos-delay="100">
+                <div class="col-md-4">
+                    <h6>Logical Quotient Rating: <%= element.response.q1 %> </h6>
+                    <h6>Coding Skills Rating: <%= element.response.q2 %> </h6>
+                    <h6>Hackathons Attended: <%= element.response.q3 %> </h6>
+                    <h6>Public Speaking points: <%= element.response.q4 %> </h6>
+                    <h6>Self Learning Capability: <%= (element.response.q5)?"Yes":"No" %> </h6>
+                    <h6>Extra Courses did?: <%= (element.response.q6)?"Yes":"No" %> </h6>
+                    <h6>Reading and Writing Skills: <% if(parseInt(element.response.q10) == 0){ %>
+                        <% str = "Poor"; %>
+                        <% }else if(parseInt(element.response.q9) == 1){ %>
+                        <% str = "Medium"; %>
+                        <% }else{ %>
+                        <% str = "Excellent"; %>
+                        <% } %>
+                        <%= str %> 
+                    </h6>
+                </div><% var str = "" %>
+                <div class="col-md-3">
+                    <h6>Memory Capability: <% if(parseInt(element.response.q11) == 0){ %>
+                        <% str = "Poor"; %>
+                        <% }else if(parseInt(element.response.q9) == 1){ %>
+                        <% str = "Medium"; %>
+                        <% }else{ %>
+                        <% str = "Excellent"; %>
+                        <% } %>
+                        <%= str %> 
+                    </h6>
+                    <h6>Taken inputs from Seniors?: <%= (element.response.q7)?"Yes":"No" %> </h6>
+                    <h6>Worked in team ever?: <%= (element.response.q8)?"Yes":"No" %> </h6>
+                    <h6>Introvert?: <%= (parseInt(element.response.q9))?"Yes":"No" %> </h6>
+                    <h6>Hard Worker: <%= (parseInt(element.response.q12a))?"Yes":"No" %> </h6>
+                    <h6>Smart Worker: <%= (parseInt(element.response.q12b))?"Yes":"No" %> </h6>
+                    <h6>Management: <%= (parseInt(element.response.q13a))?"Yes":"No" %> </h6>
+                    
+                </div>
+                <div class="col-md-5">
+                    <h6>Technical: <%= (parseInt(element.response.q13b))?"Yes":"No" %> </h6>
+                    <h6>Interested Subject: <%= subjects[parseInt(element.response.q14)] %> </h6>
+                    <h6>Interested Type of Books: <%= books[parseInt(element.response.q15)] %> </h6>
+                    <h6>Certification: <%= certificate[parseInt(element.response.q16)] %> </h6>
+                    <h6>Workshop: <%= workshops[parseInt(element.response.q17)] %> </h6>
+                    <h6>Type of company want to settle in: <%= company[parseInt(element.response.q18)] %> </h6>
+                    <h6>Interested Career Area: <%= career[parseInt(element.response.q19)] %> </h6>
+                </div>
+            </div>
+        </div>
+        
+    <% }); }%>
+
+</div>
+
+</div>
+
+<div class="row">
+    <div class="container upload-container" id="upload-container">
+        <div class="row">
+            <div class="col-md-9 offset-md-1">
+                <h4 style="font-weight: 700; text-align: center;">Update Profile</h4>
+            </div>
+            <div class="col-md-1 offset-md-1">
+                <a style="font-size: 20px" onclick="clos('upload-container');"><i class="fas fa-times"></i></a>
+            </div>
+        </div>
+        <form action="/dashboard/upload-<%= user._id%>" enctype="multipart/form-data" method="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="update-photo" class="form-label">Select Photo</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="update-photo" name="upload" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-primary" value="Upload Image" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container upload-container" id="upload-container-1">
+        <div class="row">
+            <div class="col-md-9 offset-md-1">
+                <h4 style="font-weight: 700; text-align: center;">Upload Resume</h4>
+            </div>
+            <div class="col-md-1 offset-md-1">
+                <a style="font-size: 20px" onclick="clos('upload-container-1');"><i class="fas fa-times"></i></a>
+            </div>
+        </div>
+        <form action="/dashboard/uploadcv-<%= user._id%>" enctype="multipart/form-data" method="post">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="update-photo" class="form-label">Select Resume</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="update-photo" name="upload" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-primary" value="Upload Resume" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" id='mesg-contain'></div>
+<script> 
+ 
+    
+    
+    function show(ob, cur){
+        var resp = document.getElementById(ob);
+        var curr = document.getElementById(cur);
+        if(resp.style.visibility === 'hidden'){
+            resp.style.visibility = 'visible';
+            resp.style.height = 'auto';
+            curr.innerHTML = 'My Response <i class="fas fa-eye fa-lg"></i>';
+        }  
+        else{
+            resp.style.visibility = 'hidden';
+            resp.style.height = '0px';
+            curr.innerHTML = 'My Response <i class="fas fa-eye-slash fa-lg"></i>';
+        }
+        
+    };
+    
+   async function apply(id, st){
+            //console.log(id + ' '+  st);
+            try {
+                const res = await fetch('/addrole',{
+                    method: 'POST',
+                    body: JSON.stringify({id, st}),
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const data = res.json();
+                if(data) {
+                    location.assign('/dashboard');
+                }
+            }catch (error) {
+                console.log(error);
+            }
+    }
+    var applied = [];
+    '<% for(let i=0;i<user.roles.length;i++){ %>'
+        applied.push('<%= user.roles[i] %>');
+    '<% } %>'
+    async function deleterole(num){
+        const role = applied[num];
+        console.log(role);
+        const id = '<%= user._id %>';
+        try {
+                const res = await fetch('/deleterole',{
+                    method: 'POST',
+                    body: JSON.stringify({id, role}),
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const data = res.json();
+                if(data) {
+                    location.assign('/dashboard');
+                }
+            }catch (error) {
+                console.log(error);
+            }
+    }
+    function messg(text, font, aos)
+    { 
+        document.getElementById('mesg-contain').innerHTML = '<div class="container mesg-container" id="mesg" data-aos="'+aos+'"><div class="row"><div class="col-md-11">'+font+'<h4 style="font-weight: 700;display: inline; color: green;text-align: center;"> '+text+'</h4></div><div class="col-md-1"><a style="font-size: 20px" onclick="cloos(\'mesg-contain\');"><i class="far fa-times-circle fa-lg"></i></a></div>'
+    }
+    function cloos(){
+        document.getElementById('mesg-contain').innerHTML = '';
+    }
+    </script>
+<%- include('partials/footer'); -%>
